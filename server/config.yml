@@ -1,0 +1,14 @@
+app:
+  host: 127.0.0.1
+  prot: 8080
+
+mysql:
+  path: 192.168.124.19
+  port: 3306
+  username: "root"
+  password: "example"
+  dbname: "chat"
+
+redis:
+  host: 127.0.0.1
+  port: 6379
