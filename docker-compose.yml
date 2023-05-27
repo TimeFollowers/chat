@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    image: web:v1
+    container_name: web:v1
+  chat:
+    image: chat:v1
+    container_name: chat:v1
+  nginx:
+    image: nginx
+    container_name: nginx:v1

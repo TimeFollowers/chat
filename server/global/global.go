@@ -1,7 +1,7 @@
 package global
 
 import (
-	"github.com/go-redis/redis/v8"
+	"github.com/go-redis/redis/v7"
 	"github.com/gorilla/sessions"
 	"github.com/spf13/viper"
 	"gorm.io/gorm"

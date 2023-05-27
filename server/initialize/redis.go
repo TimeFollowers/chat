@@ -1,10 +1,9 @@
 package initialize
 
 import (
-	"context"
 	"fmt"
 
-	"github.com/go-redis/redis/v8"
+	"github.com/go-redis/redis/v7"
 	"wutool.cn/chat/server/global"
 )
 
@@ -16,7 +15,7 @@ func InitRedis() *redis.Client {
 		DB:       r.DB,       // 要连接的redis 库
 	})
 	// 检测心跳
-	pong, err := RedisClient.Ping(context.Background()).Result()
+	pong, err := RedisClient.Ping().Result()
 	if err != nil {
 		fmt.Println("connect redis failed")
 		panic("redis连接失败, err:" + err.Error())

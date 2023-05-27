@@ -5,8 +5,9 @@ import (
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 	"wutool.cn/chat/server/global"
-	"wutool.cn/chat/server/module/entity"
+	"wutool.cn/chat/server/module"
 )
 
 func InitMysql() *gorm.DB {
@@ -21,7 +22,9 @@ func InitMysql() *gorm.DB {
 
 	// }
 
-	_db, err := gorm.Open(mysql.Open(m.Dsn()), &gorm.Config{})
+	_db, err := gorm.Open(mysql.Open(m.Dsn()), &gorm.Config{
+		Logger: logger.Default.LogMode(logger.Info),
+	})
 	if err != nil {
 		panic("连接数据库失败, error=" + err.Error())
 	}
@@ -35,8 +38,10 @@ func InitMysql() *gorm.DB {
 func RegisterTables() {
 	db := global.DB
 	err := db.AutoMigrate(
-		entity.User{},
-		entity.Message{},
+		module.User{},
+		module.Message{},
+		module.UserRoom{},
+		module.Room{},
 	)
 	if err != nil {
 		fmt.Println("迁移失败")
